@@ -105,8 +105,9 @@ class _MyHomePageState extends State<MyHomePage> {
     ByteData? byteData =
         await (image.toByteData(format: ui.ImageByteFormat.png));
     if (byteData != null) {
-      final result =
-          await ImageGallerySaver.saveImage(byteData.buffer.asUint8List());
+      final result = await ImageGallerySaver.saveImage(
+          byteData.buffer.asUint8List(),
+          folder: "SaveImageToGallery");
       print(result);
       Utils.toast(result.toString());
     }
@@ -119,6 +120,7 @@ class _MyHomePageState extends State<MyHomePage> {
     final result = await ImageGallerySaver.saveImage(
         Uint8List.fromList(response.data),
         quality: 60,
+        folder: "SaveImageToGallery",
         name: "hello");
     print(result);
     Utils.toast("$result");
@@ -131,7 +133,7 @@ class _MyHomePageState extends State<MyHomePage> {
         "https://hyjdoc.oss-cn-beijing.aliyuncs.com/hyj-doc-flutter-demo-run.gif";
     await Dio().download(fileUrl, savePath);
     final result =
-        await ImageGallerySaver.saveFile(savePath, isReturnPathOfIOS: true);
+        await ImageGallerySaver.saveFile(savePath, isReturnPathOfIOS: true,   folder: "SaveImageToGallery");
     print(result);
     Utils.toast("$result");
   }
@@ -144,7 +146,8 @@ class _MyHomePageState extends State<MyHomePage> {
     await Dio().download(fileUrl, savePath, onReceiveProgress: (count, total) {
       print((count / total * 100).toStringAsFixed(0) + "%");
     });
-    final result = await ImageGallerySaver.saveFile(savePath);
+    final result = await ImageGallerySaver.saveFile(savePath,
+        folder: "SaveImageToGallery-Video");
     print(result);
     Utils.toast("$result");
   }
