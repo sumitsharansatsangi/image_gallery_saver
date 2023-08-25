@@ -15,9 +15,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Save image to gallery',
+      title: 'Save image/video to gallery',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+         useMaterial3: true,
+         colorSchemeSeed: Colors.purple
+        // primarySwatch: Colors.purple,
       ),
       home: MyHomePage(),
     );
@@ -42,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Save image to gallery"),
+          title: Text("Save image to gallery", style: TextStyle(color:Colors.purpleAccent),),
         ),
         body: Center(
           child: Column(
@@ -54,7 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   alignment: Alignment.center,
                   width: 300,
                   height: 300,
-                  color: Colors.blue,
+                  color: Colors.green,
                 ),
               ),
               Container(

@@ -24,6 +24,7 @@ class HColors {
   static const Color secondaryLabelColor3 = Color(0xFF999999);
   static const Color secondaryLabelColor4 = Color(0xFFB4B4B4);
   static const Color blue2 = Color(0xFF0091FF);
+  static Color purple = const Color.fromARGB(255, 98, 0, 238);
   static const Color primary = Color(0xFF448AFF);
   static const Color secondary = Color(0xFFE95E3D);
   static const Color mediumGrey = Color(0xFF86919C);

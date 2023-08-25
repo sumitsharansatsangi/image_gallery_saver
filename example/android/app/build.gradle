@@ -25,9 +25,18 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
+//ndk.dir '/home/sumit/Android/Sdk/ndk'
+//cmake.dir '/home/sumit/Android/Sdk/cmake'
+
 android {
     compileSdkVersion 33
-    ndkVersion flutter.ndkVersion
+    ndkVersion '25.2.9519653'
+    ndkPath '/home/sumit/Android/Sdk/ndk/25.2.9519653'
+    externalNativeBuild {
+        cmake {
+            version = "3.22.1"
+        }
+    }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -70,7 +79,7 @@ flutter {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.10.0'
     androidTestImplementation 'androidx.test:runner:1.5.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
