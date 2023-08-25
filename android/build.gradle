@@ -3,6 +3,7 @@ version '1.0-SNAPSHOT'
 
 buildscript {
     ext.kotlin_version = '1.9.10'
+    ext.kotlin_coroutines_version = '1.7.3'
     repositories {
         google()
         mavenCentral()
@@ -27,12 +28,19 @@ apply plugin: 'kotlin-android'
 android {
     compileSdkVersion 33
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    ndkVersion '25.2.9519653'
+    ndkPath '/home/sumit/Android/Sdk/ndk/25.2.9519653'
+    externalNativeBuild {
+        cmake {
+            version = "3.22.1"
+        }
     }
 
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '17'
     }
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
@@ -52,4 +60,7 @@ android {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlin_coroutines_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlin_coroutines_version"
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
 }
